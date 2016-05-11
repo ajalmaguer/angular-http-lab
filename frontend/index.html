@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="CriminalsApp">
+<head>
+  <title>Criminals $http Lab</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-controller="CriminalsController as criminalsCtrl">
+
+  <h1>Infamous Criminals</h1>
+
+
+  <div>
+    <ul id="criminals">
+      <li ng-repeat="criminal in criminalsCtrl.all">
+        <span ng-click="criminalsCtrl.changeStatus(criminal)" class="status {{criminal.status}}">{{criminal.status}}</span>
+        <strong>{{criminal.name}}</strong> <em>{{criminal.location}}</em>
+        <button ng-click="criminalsCtrl.removeCriminal(criminal)" class="delete">X</button>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <form id="newCriminal" ng-submit="criminalsCtrl.addCriminal()">
+      <div>
+        <label for="name">Name:</label>
+        <input ng-model="criminalsCtrl.newCriminal.name" name="name" type="text" id="new-criminal-name" placeholder="Prof. Blergh">
+      </div>
+
+      <div>
+        <label for="location">Location:</label>
+        <input ng-model="criminalsCtrl.newCriminal.location" name="location" type="text" id="new-criminal-location" placeholder="Los Angeles, CA">
+      </div>
+
+      <div>
+        <label for="status">Staus:</label>
+        <select ng-model="criminalsCtrl.newCriminal.status" name="status">
+          <option value="" disabled="true">Please Select One</option>
+          <option value="unknown">Unknown</option>
+          <option value="alive">Alive</option>
+          <option value="dead">Dead</option>
+          option
+        </select>
+      </div>
+
+      <div>
+        <input type="submit" value="Add Criminal">
+      </div>
+
+    </form>
+
+  </div>
+
+
+
+
+
+
+
+  <!-- include angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+
+  <!-- my js -->
+  <script src="js/app.js" charset="utf-8"></script>
+  <script src="js/CriminalsController.js" charset="utf-8"></script>
+</body>
+</html>
